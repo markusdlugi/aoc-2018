@@ -49,9 +49,9 @@ while True:
                 print(x, y, sep=',')
                 firstCollision = False
             del carts[(x, y)]
-            print(f'Collision at position {(x, y)} after {time} ticks, {len(carts)} carts left.')
+            #print(f'Collision at position {(x, y)} after {time} ticks, {len(carts)} carts left.')
         else:
             carts[(x, y)] = (d, m)
     if len(carts) == 1:
-        print('Last cart: ', list(carts.keys())[0])
+        print(*list(carts.keys())[0], sep=',')
         break

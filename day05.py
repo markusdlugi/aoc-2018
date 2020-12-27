@@ -35,36 +35,38 @@ def react_units_with_stack(polymer):
 
 polymer = open("input/05.txt").read()
 
-# Part A - find minimum length by reducing all units
-start = timer()
-current = polymer
-i = 0
-while i < len(current):
-    current, i = react_units(current, i)
-    i += 1
-print(f'Min length is {len(current)}')
 
-# Part B - find minimum length after removing all units of specific type
-min_length = None
-for char in map(chr, range(ord('a'), ord('z')+1)):
-    current = re.sub(f'[{char}{char.upper()}]', '', polymer)
+# Part A - find minimum length by reducing all units
+def solve_old():
+    start = timer()
+    current = polymer
     i = 0
     while i < len(current):
         current, i = react_units(current, i)
         i += 1
-    if min_length is None or len(current) < min_length[0]:
-        min_length = (len(current), char)
-print(f'Min length is {min_length[0]} with removed type {min_length[1]}')
-end = timer()
-print(f'Took {end - start} seconds.')
-print()
+    print(len(current))
+
+    # Part B - find minimum length after removing all units of specific type
+    min_length = None
+    for char in map(chr, range(ord('a'), ord('z')+1)):
+        current = re.sub(f'[{char}{char.upper()}]', '', polymer)
+        i = 0
+        while i < len(current):
+            current, i = react_units(current, i)
+            i += 1
+        if min_length is None or len(current) < min_length[0]:
+            min_length = (len(current), char)
+    print(min_length[0])
+    end = timer()
+    print(f'Took {end - start} seconds.')
+    print()
 
 
 # Stack-based solution without changing strings
 # Part A
 start = timer()
 stack = react_units_with_stack(polymer)
-print(f'Min length is {len(stack)}')
+print(len(stack))
 
 # Part B
 min_length = None
@@ -73,6 +75,6 @@ for char in map(chr, range(ord('a'), ord('z')+1)):
     stack = react_units_with_stack(current)
     if min_length is None or len(stack) < min_length[0]:
         min_length = (len(stack), char)
-print(f'Min length is {min_length[0]} with removed type {min_length[1]}')
+print(min_length[0])
 end = timer()
 print(f'Took {end - start} seconds.')

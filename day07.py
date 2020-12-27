@@ -3,7 +3,7 @@ from collections import deque
 from heapq import heappush, heappop
 
 words = [line.strip().split() for line in open("input/07.txt")]
-steps = (words[1], words[7])
+steps = [(word[1], word[7]) for word in words]
 
 # Part A
 G = nx.DiGraph()

@@ -115,7 +115,7 @@ while len(opcode_dict) < len(commands):
         for opcode, option_count in opcode_options.items():
             if found in option_count:
                 option_count.remove(found)
-print(opcode_dict)
+#print(opcode_dict)
 
 # Execute script in second part of input
 registers = [0, 0, 0, 0]

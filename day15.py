@@ -184,16 +184,17 @@ def combat(atk, elf_death_unacceptable):
         original_elf_count = len(list(filter(lambda x: x.elf, original_units.values())))
         elf_count = len(list(filter(lambda x: x.elf, units.values())))
         if elf_count < original_elf_count:
-            print(f'An elf dies with {atk} attack power.')
+            #print(f'An elf dies with {atk} attack power.')
             return False
     hp_sum = 0
     elves = False
     for unit in units.values():
         hp_sum += unit.hp
         elves = unit.elf
-    print(f'Combat ends after {turn} full rounds with elf attack power {atk}')
-    print(f'{"Elves" if elves else "Goblins"} win with {hp_sum} total hit points left')
-    print(f'Outcome: {turn} * {hp_sum} = {turn * hp_sum}')
+    #print(f'Combat ends after {turn} full rounds with elf attack power {atk}')
+    #print(f'{"Elves" if elves else "Goblins"} win with {hp_sum} total hit points left')
+    #print(f'Outcome: {turn} * {hp_sum} = {turn * hp_sum}')
+    print(f"{turn * hp_sum}")
     return True
 
 
@@ -213,7 +214,6 @@ original_units = deepcopy(units)
 
 # Part A
 combat(3, False)
-print()
 
 # Part B
 found = False
